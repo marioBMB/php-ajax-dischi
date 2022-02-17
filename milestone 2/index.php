@@ -23,7 +23,7 @@
     
                 <div class="album-container">
                     
-                    <div v-for="(album, index in albums)" class="album">
+                    <div v-for="(album, index) in albums" class="album">
                         <img :src="album.poster" :alt="album.title+' album image'">
                         <div class="album-meta">
                             <h3 class="album-title">{{album.title}}</h3>
@@ -46,7 +46,7 @@
         <script type="text/javascript">
             
             
-            const app = new Vue(            
+            const myapp = new Vue(            
                 {
                     data: {
                         
@@ -57,7 +57,7 @@
 
                     getAlbums(arrParams=[]){
                         
-                        axios.get("./api.php", {
+                        axios.get("api.php", {
                             
                             params: {
                                 
@@ -65,7 +65,7 @@
                         })
                         .then((response) => {
                             
-                            this.albums = response;
+                            this.albums = response.data;
                             console.log(this.albums);
                         })
                         .catch((error) => {
