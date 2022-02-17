@@ -1,0 +1,77 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+    --eerieBlack: #1f1f1f;
+    --darkSlateGrey: #1e2d3b;
+    --lightIndigoGrey: #2e3a46;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--lightIndigoGrey);
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+    .spotify-logo {
+        width: 50px;
+        height: 50px;
+        margin: 0 20px;
+    }
+
+    .spotify-logo img {
+        height: 100%;
+    }
+
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background-color: var(--darkSlateGrey);
+    padding: 40px;
+}
+
+    .album-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+        .album {
+            background-color: var(--lightIndigoGrey);
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .album-meta {
+                margin-top: 20px;
+                color: #707678;
+            }
+
+            .album-title {
+                color: white;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+
+                img {
+                    width: 100%;
+                }
