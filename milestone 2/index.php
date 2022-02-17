@@ -46,8 +46,9 @@
         <script type="text/javascript">
             
             
-            const myapp = new Vue(            
+            const app = new Vue(            
                 {
+                    el: "#myapp",
                     data: {
                         
                         apiURL: "../",
@@ -60,7 +61,6 @@
                         axios.get("api.php", {
                             
                             params: {
-                                
                             }
                         })
                         .then((response) => {
