@@ -20,15 +20,21 @@
             </header>
     
             <main>
-    
+
+                <div class="filter-search">
+                    <select name="genre" id="genre" v-model="selectedvalue" @change="filterGenre(selectedvalue)">
+                        <option value='' selected>All</option>
+                        <option v-for="(genre, index) in genres" :value="genre" :key="index">{{genre}}</option>
+                    </select>
+                </div>
                 <div class="album-container">
                     
                     <div v-for="(album, index) in albums" class="album">
-                        <img :src="album.poster" :alt="album.title+' album image'">
+                        <img :src="album.poster">
                         <div class="album-meta">
                             <h3 class="album-title">{{album.title}}</h3>
                             <p class="album-author">{{album.author}}</p>
-                            <p class="album-year">{{album.year}}}</p>
+                            <p class="album-year">{{album.year}}</p>
                         </div>
                     </div>
                 </div>
@@ -51,16 +57,19 @@
                     el: "#myapp",
                     data: {
                         
-                        apiURL: "../",
+                        apiURL: "./api.php",
                         albums: [],
+                        genres: [],
+                        selectedvalue: "",
                     },
                     methods: {
 
-                    getAlbums(arrParams=[]){
+                    getAlbums(arrParams = {genre: ""}){
                         
-                        axios.get("api.php", {
-                            
+                        axios.get(this.apiURL, {
+                                
                             params: {
+                                'genre': arrParams.genre,
                             }
                         })
                         .then((response) => {
@@ -71,11 +80,18 @@
                         .catch((error) => {
                             console.log(error);
                         })
-                    },                    
+                    },
+                    filterGenre(selected){
+                        this.getAlbums({'genre': selected});
+                    }
+                },
+                computed: {
+                    
                 },
                 created(){
-                    
                     this.getAlbums();
+                    this.genres = ['Rock', 'Pop', 'Jazz', 'Metal'],
+                    console.log(this.genres);
                 }
             });
             

@@ -67,14 +67,24 @@ $data = [
     [
         "poster" => "https://m.media-amazon.com/images/I/71K9CbNZPsL._SS500_.jpg",
         "title" => "Bad",
-        "author" => "Michael Jacjson",
+        "author" => "Michael Jackson",
         "genre" => "Pop",
         "year" => "1987"
     ]
 ];
 
+if ($_GET['genre'] != ""){
+
+    $data = array_filter( $data, function($item, $index) use (&$data){ 
+
+        return $data[$index]['genre'] == $_GET['genre'];
+    }, ARRAY_FILTER_USE_BOTH);
+}
 
 
-    // header("Access-Control-Allow-Origin: *");
-    header('Content-type: application/json');
-    echo json_encode($data);
+header('Content-type: application/json');
+header("Access-Control-Allow-Origin: *");
+echo json_encode($data);
+    
+
+

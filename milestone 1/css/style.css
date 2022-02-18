@@ -29,14 +29,19 @@ header {
     align-items: center;
 }
 
-    .spotify-logo {
+    .spotify-logo{
         width: 50px;
         height: 50px;
-        margin: 0 20px;
+        margin: 0 20px;  
     }
 
     .spotify-logo img {
         height: 100%;
+    }
+
+
+    .spotify-logo-svg {
+        fill: #1dd760 !important;
     }
 
 
